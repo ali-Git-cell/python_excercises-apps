@@ -137,7 +137,7 @@ for item in transactions_clean:
       customers.append(sec)
     elif item.index(sec) == 1:
       sales.append(sec)
-    else:
+    elif item.index(sec) == 2:
       thread_sold.append(sec)
 #print(sales)
 
@@ -148,4 +148,25 @@ for sls in sales:
   fltd = float(strippedstr)
   total_sales += fltd
   
-print(total_sales)
+#print(thread_sold)
+ 
+thread_sold_split = []
+
+for color in thread_sold:
+  if not ("&" in color):
+    thread_sold_split.append(color)
+  else:
+    splitted = color.split("&")
+    for itm in splitted:
+      thread_sold_split.append(itm)
+
+#print(thread_sold_split)
+
+
+def color_count(color):
+  count = 0
+  for color in thread_sold_split:
+    count = thread_sold_split.count(color)
+  return count
+print(thread_sold)
+#print(color_count('white'))
