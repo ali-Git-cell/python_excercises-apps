@@ -208,6 +208,42 @@ c0_in_fahrenheit = c_to_f(0)
 def get_force(mass, acceleration):
   return (mass * acceleration)
 
+
+#######################################################################################
+
+
+
+letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+points = [1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 4, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10]
+
+
+letter_to_points = {key:val for key, val in zip(letters, points)}
+letter_to_points[" "] = 0
+
+
+def score_word(word):
+  point_total = 0
+  for let in word:
+    point_total += letter_to_points.pop(let, 0)
+  return point_total
+
+brownie_points = score_word("BROWNIE")
+
+
+
+player_to_words = {"players": ["BLUE", "TENNIS","EXit"], "wordNerd": ["BLUE", "TENNIS","EXit"], "Lexi Con": ["BLUE", "TENNIS","EXit"], "Prof Reader": ["BLUE", "TENNIS","EXit"]}
+
+player_to_points = {}
+
+for key, value in player_to_words.items():
+  player_points = 0
+  for word in value:
+    player_points += score_word(word)
+  print(player_points, key)
+  player_to_points[key] = player_points
+  #print(key, value)
+print(player_to_points)
+
 train_force = get_force(train_mass, train_acceleration)
 
 #print("The GE train supplies {} Newtons of force.".format(train_force))
